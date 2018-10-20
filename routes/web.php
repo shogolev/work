@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('logout', 'Auth\LoginController@logout');
+
+Route::get('404', function() {
+    return view('errors.404');
+});
+
+Route::get('blank', function() {
+    return view('blank');
+});
+
+Route::get('charts', function() {
+    return view('charts');
+});
