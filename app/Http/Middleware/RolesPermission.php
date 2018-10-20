@@ -25,12 +25,12 @@ class RolesPermission
                     $ok = 1;
                 break;
                 case 'admin' :
-                    if($path == 'charts' || $path == 'home' || $path == 'blank' || $path == '404') {
+                    if($path == 'charts' || $path == 'blank' || $path == '404') {
                         $ok = 1;
                     }
                 break;
                 case 'manager' :
-                    if($path == 'tables' || $path == 'home' || $path == '404') {
+                    if($path == 'tables' || $path == '404') {
                         $ok = 1;
                     }
                 break;

@@ -13,9 +13,8 @@
 
 Auth::routes();
 
-Route::get('/')->middleware('auth');
 Route::get('logout', 'Auth\LoginController@logout');
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => ['auth','roleCheck']], function () {
     Route::get('charts', 'ChartsController@index');
