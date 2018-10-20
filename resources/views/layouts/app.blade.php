@@ -33,7 +33,7 @@
     @section('navbar')
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-            <a class="navbar-brand mr-1" href="{{ url('/') }}">Start Bootstrap</a>
+            <a class="navbar-brand mr-1" href="{{ url("/home?role=$role") }}">{{ isset($user) ? "$role - $user->first_name" : 'Admin Panel' }}</a>
       
             <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
               <i class="fas fa-bars"></i>
@@ -82,14 +82,13 @@
                   <i class="fas fa-user-circle fa-fw"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                  @auth
+                  <a class="dropdown-item" href="#">Welcome {{ Auth::user()->first_name }}</a>
+                  @endauth
                   <a class="dropdown-item" href="#">Settings</a>
                   <a class="dropdown-item" href="#">Activity Log</a>
                   <div class="dropdown-divider"></div>
-                  @if(Auth::check())
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                  @else
-                    <a class="dropdown-item" href="{{ url('login') }}">Login</a>
-                  @endif
                 </div>
               </li>
             </ul>
@@ -100,10 +99,10 @@
     <div id="wrapper">
 
     @section('sidebar')
-        <!-- Sidebar -->
+      <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="{{ url('/') }}">
+              <a class="nav-link" href="{{ ("/home?role=$role") }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
               </a>
@@ -120,24 +119,31 @@
                 <a class="dropdown-item" href="{{ route('password.request') }}">Forgot Password</a>
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">Other Pages:</h6>
-                <a class="dropdown-item" href="{{ url('404') }}">404 Page</a>
-                <a class="dropdown-item" href="{{ url('blank') }}">Blank Page</a>
+                <a class="dropdown-item" href="{{ url("404?role=$role") }}">404 Page</a>
+                <a class="dropdown-item" href="{{ url("blank?role=$role") }}">Blank Page</a>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('charts') }}">
+              <a class="nav-link" href="{{ url("charts?role=$role") }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Charts</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tables.html">
+              <a class="nav-link" href="{{ url("tables?role=$role") }}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tables</span></a>
             </li>
           </ul>
     @show
+
     
+
     <div id="content-wrapper">
+        @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
       <div class="container-fluid">
         @yield('content')
       </div>
@@ -179,7 +185,7 @@
         </div>
       </div>
     </div>
-
+   
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

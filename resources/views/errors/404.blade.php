@@ -7,7 +7,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{ url('/') }}">Dashboard</a>
+        <a href="{{ url('/home') }}">Dashboard</a>
       </li>
       <li class="breadcrumb-item active">404 Error</li>
     </ol>
@@ -17,7 +17,7 @@
     <p class="lead">Page not found. You can
       <a href="javascript:history.back()">go back</a>
       to the previous page, or
-      <a href="{{ url('/') }}">return home</a>.</p>
+      <a href="{{ url('/home') }}">return home</a>.</p>
       
 @endsection
 

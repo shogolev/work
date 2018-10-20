@@ -31,7 +31,7 @@
       </form>
       <div class="text-center">
         <a class="d-block small mt-3" href="{{ url('register') }}">Register an Account</a>
-        <a class="d-block small" href="{{ url('reset') }}">Forgot Password?</a>
+        <a class="d-block small" href="{{ route('password.request') }}">Forgot Password?</a>
       </div>
     </div>
   </div>

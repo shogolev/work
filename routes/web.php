@@ -13,18 +13,14 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('/')->middleware('auth');
 Route::get('logout', 'Auth\LoginController@logout');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::get('404', function() {
-    return view('errors.404');
+Route::group(['middleware' => ['auth','roleCheck']], function () {
+    Route::get('charts', 'ChartsController@index');
+    Route::get('tables', 'TablesController@index');
+    Route::get('404', 'ErrorsController@index');
+    Route::get('blank', 'MapController@index');
 });
 
-Route::get('blank', function() {
-    return view('blank');
-});
-
-Route::get('charts', function() {
-    return view('charts');
-});

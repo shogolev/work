@@ -6,19 +6,19 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Roles;
-class HomeController extends Controller
+
+class ChartsController extends Controller
 {
     /**
-     * Show the application dashboard.
+     * Show the application charts.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $user = Auth::user();
-        $role = Roles::find($user->roles_id)['role']; // i tried to use rellation here, but i`v got error all the time
-        
-        return view('index',[
+        $role = Roles::find($user->roles_id)['role'];
+
+        return view('charts', [
             'user' => $user,
             'role' => $role,
         ]);

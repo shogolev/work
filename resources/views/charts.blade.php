@@ -7,7 +7,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{ url('/') }}">Dashboard</a>
+        <a href="{{ url("/home?role=$role") }}">Dashboard</a>
       </li>
       <li class="breadcrumb-item active">Charts</li>
     </ol>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Главная страница')
+@section('title', 'Index page')
     
 @section('content')
       <!-- Breadcrumbs-->
