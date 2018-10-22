@@ -21,5 +21,6 @@ Route::group(['middleware' => ['auth','roleCheck']], function () {
     Route::get('tables', 'TablesController@index');
     Route::get('404', 'ErrorsController@index');
     Route::get('blank', 'MapController@index');
+    Route::get('maps', 'MapsController@index');
 });
 

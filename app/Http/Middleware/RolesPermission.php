@@ -25,7 +25,7 @@ class RolesPermission
                     $ok = 1;
                 break;
                 case 'admin' :
-                    if($path == 'charts' || $path == 'blank' || $path == '404') {
+                    if($path == 'charts' || $path == 'blank' || $path == '404' || $path == 'maps') {
                         $ok = 1;
                     }
                 break;

@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -133,10 +133,13 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tables</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url("maps?role=$role") }}">
+                <i class="fas fa-fw fa-map"></i>
+                <span>Maps</span></a>
+            </li>
           </ul>
     @show
-
-    
 
     <div id="content-wrapper">
         @if (session('message'))
